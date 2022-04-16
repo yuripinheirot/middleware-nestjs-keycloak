@@ -10,7 +10,7 @@ export default class Pokedex {
 				data: { pokemon },
 			});
 
-			return result;
+			return db.pokedex.findMany();
 		} catch (error: any) {
 			throw new CustomError('logic.addpokemon', error);
 		}
@@ -23,6 +23,26 @@ export default class Pokedex {
 			});
 
 			return result;
+		} catch (error: any) {
+			throw new CustomError('logic.addpokemon', error);
+		}
+	};
+
+	removePokemon = async (pokemon: string) => {
+		try {
+			if (!pokemon) throw new CustomError('logic.pokedex', 'Pokemon name is required', 400);
+
+			const isValid = await db.pokedex.findFirst({
+				where: { pokemon },
+			});
+
+			if (!isValid) throw new CustomError('logic.pokedex', 'Pokemon not found', 404);
+
+			await db.pokedex.delete({
+				where: { pokemon },
+			});
+
+			return db.pokedex.findMany();
 		} catch (error: any) {
 			throw new CustomError('logic.addpokemon', error);
 		}

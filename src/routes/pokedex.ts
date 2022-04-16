@@ -6,5 +6,6 @@ const pokedexController = new PokedexController();
 
 pokedexRoute.post('/', pokedexController.addPokemon);
 pokedexRoute.get('/', pokedexController.fetchPokedex);
+pokedexRoute.delete('/', pokedexController.removePokemon);
 
 export default pokedexRoute;
