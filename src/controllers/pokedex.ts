@@ -1,27 +1,32 @@
 import { Request, Response } from 'express';
-import { CustomError } from '../errors/CustomError';
-import { addPokemon as logicAddPokemon, fetchPokedex as logicFetchPokedex } from '../logic/pokedex';
+import logicPokedex from '../logic/pokedex';
 
-export const addPokemon = async (req: Request, res: Response) => {
-	try {
-		const pokemon = req.body.name;
+export default class Pokedex {
+	addPokemon = async (req: Request, res: Response) => {
+		try {
+			const pokemon = req.body.name;
 
-		await logicAddPokemon(pokemon);
+			const pokedex = new logicPokedex();
+			await pokedex.addPokemon(pokemon);
 
-		res.status(201).send({ success: true });
-	} catch (error: any) {
-		const { statusCode, message } = error;
-		res.status(statusCode).send({ error: message });
-	}
-};
+			res.status(201).send({ success: true });
+		} catch (error: any) {
+			const { module, statusCode, message } = error;
+			console.error({ module, statusCode, message });
+			res.status(statusCode).send({ error: message });
+		}
+	};
 
-export const fetchPokedex = async (req: Request, res: Response) => {
-	try {
-		const data = await logicFetchPokedex();
+	fetchPokedex = async (res: Response) => {
+		try {
+			const pokedex = new logicPokedex();
+			const data = await pokedex.fetchPokedex();
 
-		res.status(200).send({ data });
-	} catch (error: any) {
-		const { statusCode, message } = error;
-		res.status(statusCode).send({ error: message });
-	}
-};
+			res.status(200).send({ data });
+		} catch (error: any) {
+			const { module, statusCode, message } = error;
+			console.error({ module, statusCode, message });
+			res.status(statusCode).send({ error: message });
+		}
+	};
+}

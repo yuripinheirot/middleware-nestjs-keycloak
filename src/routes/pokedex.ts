@@ -1,9 +1,10 @@
 import express from 'express';
-import { addPokemon, fetchPokedex } from '../controllers/pokedex';
+import PokedexController from '../controllers/pokedex';
 
 const pokedexRoute = express.Router();
+const pokedexController = new PokedexController();
 
-pokedexRoute.post('/', addPokemon);
-pokedexRoute.get('/', fetchPokedex);
+pokedexRoute.post('/', pokedexController.addPokemon);
+pokedexRoute.get('/', pokedexController.fetchPokedex);
 
 export default pokedexRoute;
