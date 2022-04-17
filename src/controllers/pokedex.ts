@@ -4,7 +4,7 @@ import logicPokedex from '../logic/pokedex';
 export default class Pokedex {
 	addPokemon = async (req: Request, res: Response) => {
 		try {
-			const pokemon = req.body.name;
+			const pokemon = req.body.pokemon;
 
 			const pokedex = new logicPokedex();
 			const result = await pokedex.addPokemon(pokemon);
@@ -34,7 +34,7 @@ export default class Pokedex {
 
 	removePokemon = async (req: Request, res: Response) => {
 		try {
-			const pokemon = req.body.name;
+			const pokemon = req.body.pokemon;
 
 			const pokedex = new logicPokedex();
 			const result = await pokedex.removePokemon(pokemon);

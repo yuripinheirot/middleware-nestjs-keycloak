@@ -2,7 +2,7 @@ POST http://localhost:3003/pokedex
 Content-type: application/json
 
 {
-  "name": "pikachu"
+  "pokemon": "pikachuu"
 }
 ###
 GET http://localhost:3003/pokedex
@@ -13,5 +13,5 @@ DELETE http://localhost:3003/pokedex
 Content-type: application/json
 
 {
-  "name": "dddddda111dds1d"
+  "pokemon": "pikachuu"
 }
