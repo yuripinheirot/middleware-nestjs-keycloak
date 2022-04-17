@@ -10,6 +10,7 @@ A simple pokedex based in NodeJS, Express, Typescript, Docker and MySql :D
 
 
 ## Installation
+Prerequisites: Node 17, Docker, Docker-compose
 
 Install pokemon-project-back with npm
 
