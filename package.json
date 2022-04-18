@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "clear && tsc && ts-node-dev --exit-child ./index.ts"
+    "debug": "clear && tsc && ts-node-dev --exit-child ./index.ts",
+    "installation": "./script/install.sh"
   },
   "keywords": [],
   "author": "",
