@@ -16,6 +16,7 @@ Install pokemon-project-back with npm
 
 Automatic installation
 ```bash
+  cd pokemon-project-back
   npm run installation
 ```
 
