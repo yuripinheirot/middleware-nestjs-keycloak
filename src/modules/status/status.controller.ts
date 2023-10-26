@@ -1,16 +1,21 @@
 import { Controller, Get } from '@nestjs/common';
-import { Logger } from 'src/services/logger/logger.service';
+import { CustomLoggerService } from 'src/shared/logger/logger.service';
 
 @Controller('status')
 export class StatusController {
-  constructor(private readonly logger: Logger) {
-    this.logger.setPrefix('[STATUS CONTROLLER]');
+  constructor(private readonly logger: CustomLoggerService) {
+    this.logger.setPrefix('StatusController');
   }
 
   @Get()
   getStatus() {
-    const message = { status: 'ok', message: "Hello! I'm here!" };
-    this.logger.log('getStatus()', message);
-    return message;
+    try {
+      const message = { status: 'ok', message: "Hello! I'm here!" };
+      this.logger.log('getStatus()', message);
+
+      return message;
+    } catch (error) {
+      this.logger.error('getStatus()', error);
+    }
   }
 }
