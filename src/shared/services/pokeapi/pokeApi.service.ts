@@ -25,6 +25,7 @@ export class PokeApiService {
       return data;
     } catch (error) {
       this.logger.error('getPokemonByName()', error);
+      throw error;
     }
   }
 }
