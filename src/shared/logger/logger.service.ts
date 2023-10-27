@@ -6,7 +6,10 @@ export class CustomLoggerService implements LoggerService {
   private prefix: string = 'CustomLoggerService';
 
   log(message: string, ...optionalParams: any[]) {
-    console.log(`[LOG] [${this.prefix}] ${message}`, ...optionalParams);
+    console.log(
+      `[LOG] [${this.prefix}] ${message}`,
+      JSON.stringify([...optionalParams]),
+    );
   }
   error(message: string, ...optionalParams: any[]) {
     if (optionalParams[0] instanceof AxiosError) {
@@ -25,10 +28,10 @@ export class CustomLoggerService implements LoggerService {
       });
     }
 
-    console.log(`[ERROR] [${this.prefix}] ${message}`, ...optionalParams);
+    console.log(`[ERROR] [${this.prefix}] ${message}`, [...optionalParams]);
   }
   warn(message: string, ...optionalParams: any[]) {
-    console.log(`[WARN] [${this.prefix}] ${message}`, ...optionalParams);
+    console.log(`[WARN] [${this.prefix}] ${message}`, [...optionalParams]);
   }
   setPrefix(prefix: string) {
     this.prefix = prefix;
