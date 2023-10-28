@@ -1,5 +1,5 @@
 import { Exclude, Expose } from 'class-transformer';
-import { PokemonApiType } from 'src/shared/types/pokemon.type';
+import { PokemonApiType } from 'src/shared/types/pokemonApi.type';
 
 @Exclude()
 export class PokemonApiDto implements PokemonApiType {

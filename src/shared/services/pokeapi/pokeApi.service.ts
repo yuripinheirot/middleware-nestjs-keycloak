@@ -5,7 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import {
   PokemonApiType,
   PokemonSpecieApiType,
-} from 'src/shared/types/pokemon.type';
+} from 'src/shared/types/pokemonApi.type';
 import { plainToClass } from 'class-transformer';
 import { PokemonApiDto } from './dto/pokemonApi.response.dto copy';
 import { PokemonSpecieApiDto } from './dto/pokemonSpecieApi.response.dto';

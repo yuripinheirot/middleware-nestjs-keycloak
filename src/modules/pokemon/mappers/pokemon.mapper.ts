@@ -1,4 +1,4 @@
-import { PokemonApiType } from 'src/shared/types/pokemon.type';
+import { PokemonApiType } from 'src/shared/types/pokemonApi.type';
 import { PokemonType } from '../types/pokemon.type';
 import { PokemonSpecieApiDto } from 'src/shared/services/pokeapi/dto/pokemonSpecieApi.response.dto';
 
