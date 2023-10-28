@@ -13,3 +13,9 @@ export type PokemonType = {
     front_shiny_female: string | null;
   };
 };
+
+export type PokemonOffsetType = {
+  next: string;
+  previous: string;
+  results: PokemonType[];
+};

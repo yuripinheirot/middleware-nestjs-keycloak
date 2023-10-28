@@ -18,3 +18,14 @@ export type PokemonApiType = {
   };
   sprites: PokemonSpritesApiType;
 };
+
+export type PokemonOffsetApiType = {
+  name: string;
+  url: string;
+};
+
+export type PokemonOffsetResponseApiType = {
+  next: string;
+  previous: string;
+  results: PokemonOffsetApiType[];
+};

@@ -21,7 +21,17 @@ export class AxiosErrorsInterceptor implements NestInterceptor {
       catchError((error) => {
         return throwError(() => {
           if (error instanceof AxiosError) {
-            this.logger.error('AxiosErrorsInterceptor', error);
+            this.logger.error('AxiosErrorsInterceptor', {
+              name: error.name,
+              message: error.message,
+              status: error.response?.status,
+              statusText: error.response?.statusText,
+              url: error.config?.url,
+              method: error.config?.method,
+              baseUrl: error.config?.baseURL,
+              response: error.response,
+            });
+
             return new HttpException(
               error.response.data,
               error.response.status,

@@ -1,15 +1,9 @@
-import {
-  Controller,
-  Get,
-  Inject,
-  Param,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Get, Param, Query, UseInterceptors } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
 import { CustomLoggerService } from 'src/shared/logger/logger.service';
 import { AxiosErrorsInterceptor } from 'src/shared/interceptors/express.interceptor';
-import { CACHE_MANAGER, CacheInterceptor } from '@nestjs/cache-manager';
-import { Cache } from 'cache-manager';
+import { CacheInterceptor } from '@nestjs/cache-manager';
+import { queryPaginatedParams } from 'src/shared/types/params.type';
 
 @Controller('pokemon')
 @UseInterceptors(AxiosErrorsInterceptor)
@@ -18,7 +12,6 @@ export class PokemonController {
   constructor(
     private readonly logger: CustomLoggerService,
     private readonly pokemonService: PokemonService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {
     this.logger.setPrefix(`@Controller('pokemon')`);
   }
@@ -26,5 +19,10 @@ export class PokemonController {
   @Get(':name')
   async findOne(@Param('name') name: string) {
     return this.pokemonService.findOne(name);
+  }
+
+  @Get()
+  async findAll(@Query() query: queryPaginatedParams) {
+    return this.pokemonService.findAll(query);
   }
 }
