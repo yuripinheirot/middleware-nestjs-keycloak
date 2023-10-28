@@ -2,13 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { CustomLoggerService } from '../../logger/logger.service';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
-import {
-  PokemonApiType,
-  PokemonSpecieApiType,
-} from 'src/shared/types/pokemonApi.type';
+import { PokemonApiType } from 'src/shared/types/pokemonApi.type';
 import { plainToClass } from 'class-transformer';
 import { PokemonApiDto } from './dto/pokemonApi.response.dto copy';
 import { PokemonSpecieApiDto } from './dto/pokemonSpecieApi.response.dto';
+import { PokemonSpecieApiType } from 'src/shared/types/pokemonSpecieApi.type';
 
 @Injectable()
 export class PokeApiService {

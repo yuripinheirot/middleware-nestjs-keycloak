@@ -1,4 +1,5 @@
-import { PokemonApiType, PokemonSpecieApiType } from '../types/pokemonApi.type';
+import { PokemonApiType } from '../types/pokemonApi.type';
+import { PokemonSpecieApiType } from '../types/pokemonSpecieApi.type';
 
 export class PokemonApiMapper {
   public static pokemon(data: PokemonApiType): PokemonApiType {

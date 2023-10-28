@@ -2,7 +2,7 @@ import { Exclude, Expose } from 'class-transformer';
 import {
   PokemonSpecieApiType,
   flavorTextEntriesType,
-} from 'src/shared/types/pokemonApi.type';
+} from 'src/shared/types/pokemonSpecieApi.type';
 
 @Exclude()
 export class PokemonSpecieApiDto implements PokemonSpecieApiType {
