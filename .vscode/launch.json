@@ -10,7 +10,8 @@
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "port": 9229
+      "port": 9229,
+      "restart": true
     }
   ]
 }

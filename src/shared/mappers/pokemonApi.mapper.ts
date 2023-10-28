@@ -1,6 +1,6 @@
 import { PokemonApiType, PokemonSpecieApiType } from '../types/pokemon.type';
 
-export class PokemonMapper {
+export class PokemonApiMapper {
   public static pokemon(data: PokemonApiType): PokemonApiType {
     return {
       id: data.id,

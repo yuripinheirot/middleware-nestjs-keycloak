@@ -6,7 +6,9 @@ import {
   PokemonApiType,
   PokemonSpecieApiType,
 } from 'src/shared/types/pokemon.type';
-import { PokemonMapper } from 'src/shared/mappers/pokemon.mapper';
+import { plainToClass } from 'class-transformer';
+import { PokemonApiDto } from './dto/pokemonApi.response.dto copy';
+import { PokemonSpecieApiDto } from './dto/pokemonSpecieApi.response.dto';
 
 @Injectable()
 export class PokeApiService {
@@ -31,13 +33,13 @@ export class PokeApiService {
       },
     );
 
-    const pokemon = PokemonMapper.pokemon(data);
+    const pokemon = plainToClass(PokemonApiDto, data);
 
     this.logger.log('getPokemonSpecieByNameOrId() - SUCCESS', {
       data: pokemon,
     });
 
-    return data;
+    return pokemon;
   }
 
   async getPokemonSpecieByNameOrId(
@@ -46,18 +48,18 @@ export class PokeApiService {
     this.logger.log('getPokemonSpecieByNameOrId()', { id });
 
     const { data } = await this.httpService.axiosRef.get<PokemonSpecieApiType>(
-      `/pokemon/${id}`,
+      `/pokemon-species/${id}`,
       {
         baseURL: this.baseUrl,
       },
     );
 
-    const pokemonSpecie = PokemonMapper.pokemonSpecie(data);
+    const pokemonSpecie = plainToClass(PokemonSpecieApiDto, data);
 
     this.logger.log('getPokemonSpecieByNameOrId() - SUCCESS', {
       data: pokemonSpecie,
     });
 
-    return data;
+    return pokemonSpecie;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PokeApiService } from 'src/shared/services/pokeapi/pokeApi.service';
-import { PokemonType } from './pokemon.type';
+import { PokemonMapper } from './mappers/pokemon.mapper';
 
 @Injectable()
 export class PokemonService {
@@ -12,11 +12,10 @@ export class PokemonService {
     const pokemonSpecieApiData =
       await this.pokeApiService.getPokemonSpecieByNameOrId(name);
 
-    const pokemon: PokemonType = {
-      id: pokemonApiData.id,
-      name: pokemonApiData.name,
-      description: pokemonSpecieApiData.flavor_text_entries[0].flavor_text,
-    };
+    const pokemon = PokemonMapper.buildPokemon({
+      pokemonApiData,
+      pokemonSpecieApiData,
+    });
 
     return pokemon;
   }
