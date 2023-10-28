@@ -13,7 +13,7 @@ import { CustomLoggerService } from '../logger/logger.service';
 @Injectable()
 export class AxiosErrorsInterceptor implements NestInterceptor {
   constructor(private readonly logger: CustomLoggerService) {
-    this.logger.setPrefix('AxiosErrorsInterceptor');
+    this.logger.setPrefix('POKEAPI');
   }
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
