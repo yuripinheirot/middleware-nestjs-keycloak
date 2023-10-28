@@ -15,6 +15,7 @@ export class PokemonMapper {
       id: data.pokemonApiData.id,
       name: data.pokemonApiData.name,
       description: description.replace(/[\n\f]/g, ' '),
+      sprites: data.pokemonApiData.sprites,
     };
   }
 }
