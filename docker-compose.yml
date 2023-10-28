@@ -1,0 +1,45 @@
+version: '3.9'
+
+volumes:
+  app-vol:
+  app-node-modules-vol:
+  redis-vol:
+
+services:
+  app: &app
+    hostname: app
+    image: node:16
+    working_dir: /home/node/app
+    env_file:
+      - ./.env
+    ports:
+      - 3003:3003
+      - 9229:9229
+    command: yarn dev
+    volumes:
+      - ./:/home/node/app
+      - app-node-modules-vol:/home/node/app/node_modules
+    depends_on:
+      redis:
+        condition: service_started
+      redis-commander:
+        condition: service_started
+
+  redis:
+    hostname: redis
+    image: 'redis:alpine'
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-vol:/home/node/app/data/redis
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=admin
+      - HTTP_PASSWORD=admin
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis
