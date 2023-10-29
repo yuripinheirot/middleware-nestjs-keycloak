@@ -33,6 +33,7 @@ export class PokemonService {
     const pokemonOffset = await Promise.all(pokemonOffsetPromises);
 
     return {
+      count: pokemonPaginated.count,
       next: pokemonPaginated.next,
       previous: pokemonPaginated.previous,
       results: pokemonOffset,

@@ -25,6 +25,7 @@ export type PokemonOffsetApiType = {
 };
 
 export type PokemonOffsetResponseApiType = {
+  count: number;
   next: string;
   previous: string;
   results: PokemonOffsetApiType[];
