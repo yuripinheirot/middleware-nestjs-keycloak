@@ -9,11 +9,14 @@ export class PokemonMapper {
     pokemonApiData: PokemonApiType;
     pokemonSpecieApiData: PokemonSpecieApiDto;
   }): PokemonType {
-    const { flavor_text_entries: entries } = data.pokemonSpecieApiData;
-    const { sprites } = data.pokemonApiData;
+    const {
+      pokemonSpecieApiData: { flavor_text_entries } = {},
+      pokemonApiData: { sprites } = {},
+    } = data;
 
-    const entryEnglish = entries.find((entry) => entry.language.name === 'en');
-    const description = entryEnglish.flavor_text || entries[0].flavor_text;
+    const description =
+      flavor_text_entries?.find((entry) => entry.language.name === 'en')
+        ?.flavor_text || null;
 
     const spritesFiltered = Object.entries(sprites).reduce(
       (acc, [key, value]) => {
@@ -28,7 +31,7 @@ export class PokemonMapper {
     return {
       id: data.pokemonApiData.id,
       name: data.pokemonApiData.name,
-      description: description.replace(/[\n\f]/g, ' '),
+      description: description && description.replace(/[\n\f]/g, ' '),
       sprites: spritesFiltered as SpritesType,
     };
   }

@@ -45,17 +45,11 @@ export class PokeApiService {
     return pokemon;
   }
 
-  async getPokemonSpecieByNameOrId(
-    id: number | string,
-  ): Promise<PokemonSpecieApiType> {
-    this.logger.log('getPokemonSpecieByNameOrId()', { id });
+  async getPokemonSpecieByUrl(url: string): Promise<PokemonSpecieApiType> {
+    this.logger.log('getPokemonSpecieByNameOrId()', { id: url });
 
-    const { data } = await this.httpService.axiosRef.get<PokemonSpecieApiType>(
-      `/pokemon-species/${id}`,
-      {
-        baseURL: this.baseUrl,
-      },
-    );
+    const { data } =
+      await this.httpService.axiosRef.get<PokemonSpecieApiType>(url);
 
     const pokemonSpecie = plainToClass(PokemonSpecieApiDto, data);
 

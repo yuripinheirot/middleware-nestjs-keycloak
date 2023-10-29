@@ -1,6 +1,6 @@
 export type flavorTextEntriesType = {
-  flavor_text: string;
-  language: {
+  flavor_text?: string;
+  language?: {
     name: string;
   };
 };

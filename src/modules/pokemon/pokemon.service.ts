@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PokeApiService } from 'src/shared/services/pokeapi/pokeApi.service';
 import { PokemonMapper } from './mappers/pokemon.mapper';
 import { queryPaginatedParams } from 'src/shared/types/params.type';
-import { PokemonOffsetResponseApiType } from 'src/shared/types/pokemonApi.type';
+import { PokemonOffsetResponseType } from './types/pokemon.type';
 
 @Injectable()
 export class PokemonService {
@@ -12,7 +12,9 @@ export class PokemonService {
     const pokemonApiData = await this.pokeApiService.getPokemonByNameOrId(name);
 
     const pokemonSpecieApiData =
-      await this.pokeApiService.getPokemonSpecieByNameOrId(name);
+      await this.pokeApiService.getPokemonSpecieByUrl(
+        pokemonApiData.species.url,
+      );
 
     const pokemon = PokemonMapper.buildPokemon({
       pokemonApiData,
@@ -24,7 +26,16 @@ export class PokemonService {
 
   async findAll(
     query: queryPaginatedParams,
-  ): Promise<PokemonOffsetResponseApiType> {
-    return this.pokeApiService.findAllPokemonPaginated(query);
+  ): Promise<PokemonOffsetResponseType> {
+    const data = await this.pokeApiService.findAllPokemonPaginated(query);
+
+    const totalPages = Math.ceil(data.count / +query.limit);
+
+    return {
+      totalPages,
+      next: data.next,
+      previous: data.previous,
+      results: data.results,
+    };
   }
 }

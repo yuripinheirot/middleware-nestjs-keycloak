@@ -1,3 +1,5 @@
+import { PokemonOffsetApiType } from 'src/shared/types/pokemonApi.type';
+
 export type PokemonType = {
   id: number;
   name: string;
@@ -12,4 +14,11 @@ export type PokemonType = {
     front_shiny: string | null;
     front_shiny_female: string | null;
   };
+};
+
+export type PokemonOffsetResponseType = {
+  totalPages: number;
+  next: string;
+  previous: string;
+  results: PokemonOffsetApiType[];
 };
