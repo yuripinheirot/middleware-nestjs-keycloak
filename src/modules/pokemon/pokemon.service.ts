@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PokeApiService } from 'src/shared/services/pokeapi/pokeApi.service';
 import { PokemonMapper } from './mappers/pokemon.mapper';
 import { queryPaginatedParams } from 'src/shared/types/params.type';
-import { PokemonOffsetType } from './types/pokemon.type';
+import { PokemonOffsetResponseApiType } from 'src/shared/types/pokemonApi.type';
 
 @Injectable()
 export class PokemonService {
@@ -22,21 +22,9 @@ export class PokemonService {
     return pokemon;
   }
 
-  async findAll(query: queryPaginatedParams): Promise<PokemonOffsetType> {
-    const pokemonPaginated =
-      await this.pokeApiService.findAllPokemonPaginated(query);
-
-    const pokemonOffsetPromises = pokemonPaginated.results.map((pokemon) => {
-      return this.findOne(pokemon.name);
-    });
-
-    const pokemonOffset = await Promise.all(pokemonOffsetPromises);
-
-    return {
-      count: pokemonPaginated.count,
-      next: pokemonPaginated.next,
-      previous: pokemonPaginated.previous,
-      results: pokemonOffset,
-    };
+  async findAll(
+    query: queryPaginatedParams,
+  ): Promise<PokemonOffsetResponseApiType> {
+    return this.pokeApiService.findAllPokemonPaginated(query);
   }
 }
