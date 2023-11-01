@@ -6,6 +6,7 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
 import { SharedModule } from './shared/shared.module';
 import type { RedisClientOptions } from 'redis';
 import { CacheModule, CacheStore } from '@nestjs/cache-manager';
+import { PokedexModule } from './modules/pokedex/pokedex.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CacheModule, CacheStore } from '@nestjs/cache-manager';
         host: 'redis',
       },
     }),
+    PokedexModule,
   ],
   controllers: [],
   providers: [],
