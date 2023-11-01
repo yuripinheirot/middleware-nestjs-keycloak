@@ -4,7 +4,13 @@ volumes:
   app-vol:
   app-node-modules-vol:
   redis-vol:
-  postgres_data:
+  postgres-vol:
+  keycloak-vol:
+
+networks:
+  custom-network:
+    driver: bridge
+    name: custom-network
 
 services:
   app: &app
@@ -20,41 +26,15 @@ services:
     volumes:
       - ./:/home/node/app
       - app-node-modules-vol:/home/node/app/node_modules
+    networks:
+      - custom-network
     depends_on:
       redis:
         condition: service_started
       redis-commander:
         condition: service_started
-
-  redis:
-    hostname: redis
-    image: 'redis:alpine'
-    ports:
-      - 6379:6379
-    volumes:
-      - redis-vol:/home/node/app/data/redis
-
-  redis-commander:
-    image: rediscommander/redis-commander:latest
-    environment:
-      - REDIS_HOSTS=local:redis:6379
-      - HTTP_USER=admin
-      - HTTP_PASSWORD=admin
-    ports:
-      - 8081:8081
-    depends_on:
-      - redis
-
-  postgres:
-    image: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      keycloak:
+        condition: service_started
 
   keycloak:
     image: quay.io/keycloak/keycloak:legacy
@@ -67,9 +47,47 @@ services:
       DB_PASSWORD: postgres
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
-      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-      #JDBC_PARAMS: "ssl=true"
     ports:
       - 8080:8080
     depends_on:
       - postgres
+    networks:
+      - custom-network
+    volumes:
+      - keycloak-vol:/home/node/app/data/keycloak
+
+  postgres:
+    image: postgres
+    volumes:
+      - postgres-vol:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - custom-network
+
+  redis:
+    hostname: redis
+    image: 'redis:alpine'
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-vol:/home/node/app/data/redis
+    networks:
+      - custom-network
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=admin
+      - HTTP_PASSWORD=admin
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis
+    networks:
+      - custom-network
