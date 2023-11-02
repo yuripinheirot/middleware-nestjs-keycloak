@@ -10,7 +10,6 @@ volumes:
 networks:
   custom-network:
     driver: bridge
-    name: custom-network
 
 services:
   app: &app

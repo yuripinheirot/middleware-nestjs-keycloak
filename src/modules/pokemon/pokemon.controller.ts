@@ -4,10 +4,12 @@ import { CustomLoggerService } from 'src/shared/logger/logger.service';
 import { AxiosErrorsInterceptor } from 'src/shared/interceptors/express.interceptor';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { queryPaginatedParams } from 'src/shared/types/params.type';
+import { Unprotected } from 'nest-keycloak-connect';
 
 @Controller('pokemon')
 @UseInterceptors(AxiosErrorsInterceptor)
 @UseInterceptors(CacheInterceptor)
+@Unprotected()
 export class PokemonController {
   constructor(
     private readonly logger: CustomLoggerService,
