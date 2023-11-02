@@ -7,12 +7,11 @@ import { SharedModule } from './shared/shared.module';
 import type { RedisClientOptions } from 'redis';
 import { CacheModule, CacheStore } from '@nestjs/cache-manager';
 import { PokedexModule } from './modules/pokedex/pokedex.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PokedexEntity } from './entities/pokedex.entity';
 
 @Module({
   imports: [
-    StatusModule,
-    PokemonModule,
-    SharedModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -26,6 +25,19 @@ import { PokedexModule } from './modules/pokedex/pokedex.module';
         host: 'redis',
       },
     }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'postgres',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'postgres',
+      entities: [PokedexEntity],
+      synchronize: true,
+    }),
+    StatusModule,
+    PokemonModule,
+    SharedModule,
     PokedexModule,
   ],
   controllers: [],
