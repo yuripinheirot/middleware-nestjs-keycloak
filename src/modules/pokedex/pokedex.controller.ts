@@ -3,6 +3,7 @@ import { PokedexService } from './pokedex.service';
 import { AuthenticatedUser } from 'nest-keycloak-connect';
 import { UserAuthenticatedType } from 'src/shared/types/keycloak.type';
 import { AddPokemonRequestDto } from './dto/AddPokemon.request.dto';
+import { AddPokemonResponseDto } from './dto/AddPokemon.response.dto';
 
 @Controller('pokedex')
 export class PokedexController {
@@ -18,6 +19,8 @@ export class PokedexController {
 
   @Get()
   async getPokedex(@AuthenticatedUser() user: UserAuthenticatedType) {
-    return this.pokedexService.getPokedex(user.sub);
+    const pokedex = await this.pokedexService.getPokedex(user.sub);
+
+    return new AddPokemonResponseDto(pokedex);
   }
 }
