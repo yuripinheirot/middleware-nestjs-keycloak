@@ -18,9 +18,9 @@ export class PokemonController {
     this.logger.setPrefix(`@Controller('pokemon')`);
   }
 
-  @Get(':name')
-  async findOne(@Param('name') name: string) {
-    return this.pokemonService.findOne(name);
+  @Get(':pokemon')
+  async findOne(@Param('pokemon') pokemon: string | number) {
+    return this.pokemonService.findOne(pokemon);
   }
 
   @Get()

@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PokedexEntity } from 'src/entities/pokedex.entity';
 import { Repository } from 'typeorm';
-import { AddPokemonRequestDtoType } from './types/AddPokemonDto.request.type';
+import { AddPokemonRequestDtoType } from './types/addPokemonDto.request.type';
 
 @Injectable()
 export class PokedexService {
@@ -13,7 +13,7 @@ export class PokedexService {
 
   async addPokemon(idUser: string, payload: AddPokemonRequestDtoType) {
     const alreadyAdded = await this.pokedexRepository.findOne({
-      where: { pokemonId: payload.pokemonId, idUser: idUser },
+      where: { pokemonName: payload.pokemonName, idUser: idUser },
     });
 
     if (alreadyAdded) {
@@ -21,7 +21,7 @@ export class PokedexService {
     }
 
     await this.pokedexRepository.insert({
-      pokemonId: payload.pokemonId,
+      pokemonName: payload.pokemonName,
       idUser,
     });
   }

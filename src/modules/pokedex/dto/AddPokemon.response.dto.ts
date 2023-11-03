@@ -1,11 +1,11 @@
 import { Expose } from 'class-transformer';
-import { PokedexType } from '../types/Pokedex.type';
+import { PokedexItemType } from '../types/pokedex.type';
 
 export class AddPokemonResponseDto {
-  constructor(partial: Partial<PokedexType[]>) {
-    this.pokedex = partial.map((p) => p.pokemonId);
+  constructor(partial: Partial<PokedexItemType[]>) {
+    this.pokedex = partial.map((p) => p.pokemonName);
   }
 
   @Expose()
-  pokedex: number[];
+  pokedex: string[];
 }

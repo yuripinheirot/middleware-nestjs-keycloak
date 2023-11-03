@@ -1,7 +1,7 @@
-import { IsNumber } from 'class-validator';
-import { AddPokemonRequestDtoType } from '../types/AddPokemonDto.request.type';
+import { IsString } from 'class-validator';
+import { AddPokemonRequestDtoType } from '../types/addPokemonDto.request.type';
 
 export class AddPokemonRequestDto implements AddPokemonRequestDtoType {
-  @IsNumber()
-  pokemonId: number;
+  @IsString()
+  pokemonName: string;
 }

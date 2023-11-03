@@ -1,15 +1,15 @@
-import { PokedexType } from 'src/modules/pokedex/types/Pokedex.type';
+import { PokedexItemType } from 'src/modules/pokedex/types/pokedex.type';
 import { Entity, Column, Generated, PrimaryColumn, Index } from 'typeorm';
 
 @Entity({ name: 'pokedex' })
-@Index(['pokemonId', 'idUser'], { unique: true })
-export class PokedexEntity implements PokedexType {
+@Index(['pokemonName', 'idUser'], { unique: true })
+export class PokedexEntity implements PokedexItemType {
   @PrimaryColumn()
   @Generated('uuid')
   id: number;
 
   @Column()
-  pokemonId: number;
+  pokemonName: string;
 
   @Column({ type: 'uuid' })
   idUser: string;

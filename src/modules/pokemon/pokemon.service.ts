@@ -8,20 +8,22 @@ import { PokemonOffsetResponseType } from './types/pokemon.type';
 export class PokemonService {
   constructor(private readonly pokeApiService: PokeApiService) {}
 
-  async findOne(name: string) {
-    const pokemonApiData = await this.pokeApiService.getPokemonByNameOrId(name);
+  async findOne(pokemon: string | number) {
+    const paramNormalized =
+      typeof pokemon === 'string' ? pokemon.toLowerCase() : pokemon;
+
+    const pokemonApiData =
+      await this.pokeApiService.getPokemonByNameOrId(paramNormalized);
 
     const pokemonSpecieApiData =
       await this.pokeApiService.getPokemonSpecieByUrl(
         pokemonApiData.species.url,
       );
 
-    const pokemon = PokemonMapper.buildPokemon({
+    return PokemonMapper.buildPokemon({
       pokemonApiData,
       pokemonSpecieApiData,
     });
-
-    return pokemon;
   }
 
   async findAll(
