@@ -19,7 +19,7 @@ import { APP_GUARD } from '@nestjs/core';
       authServerUrl: 'http://host.docker.internal:8080/auth',
       realm: 'pokemon',
       clientId: 'pokemon-api',
-      secret: 'lawloaFtlCU5Ze3AaiiibOLUkgZKAhUd',
+      secret: 'iM7yPkxIjSHrB5CnkMaiN8JqOaJNl3IN',
       cookieKey: 'Authorization',
       logLevels: ['verbose'],
       tokenValidation: TokenValidation.ONLINE,
