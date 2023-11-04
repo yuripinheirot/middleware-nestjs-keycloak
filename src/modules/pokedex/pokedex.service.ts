@@ -11,6 +11,10 @@ export class PokedexService {
     private pokedexRepository: Repository<PokedexEntity>,
   ) {}
 
+  getPokedex(idUser: string) {
+    return this.pokedexRepository.find({ where: { idUser } });
+  }
+
   async addPokemon(idUser: string, payload: AddPokemonRequestDtoType) {
     const alreadyAdded = await this.pokedexRepository.findOne({
       where: { pokemonName: payload.pokemonName, idUser: idUser },
@@ -24,9 +28,7 @@ export class PokedexService {
       pokemonName: payload.pokemonName,
       idUser,
     });
-  }
 
-  getPokedex(idUser: string) {
-    return this.pokedexRepository.find({ where: { idUser } });
+    return this.getPokedex(idUser);
   }
 }
