@@ -11,15 +11,39 @@ Este projeto é um middleware construído com NestJS que fornece uma endpoints o
 - **Testes**: Inclui testes de feature e unitários para assegurar a qualidade e a funcionalidade do middleware.
 - **TypeORM com PostgreSQL**: Utiliza TypeORM para integração com um banco de dados PostgreSQL.
 - **Sistema de Caching**: Otimiza as requisições e diminui os tempos de carregamento usando Redis como sistema de caching.
-- **Rotas**:
-	- **Pokémon**:
-	    - `GET /pokemon/:nameOrId`: Consulta e retorna detalhes de um Pokémon específico, seja por nome ou ID.
-	    - `GET /pokemon`: Lista todos os Pokémon disponíveis, perfeito para uma visão geral.
-	- **Pokédex**:
-	    - `GET /pokedex`: Acessa e retorna a Pokédex do usuário autenticado.
-	    - `POST /pokedex`: Permite adicionar um Pokémon à Pokédex do usuário autenticado.
-	    - `DELETE /pokedex`: Remove um Pokémon da Pokédex do usuário autenticado.
 - **Autenticação com Keycloak**: Garante a segurança dos dados e das operações ao exigir autenticação via Keycloak.
+
+### 🛣️ Rotas
+
+O middleware oferece uma variedade de endpoints para facilitar o acesso aos dados da PokeAPI e à gestão da Pokédex do usuário. Abaixo estão as principais rotas disponíveis:
+
+#### Pokémon
+- `GET /pokemon/:nameOrId`:
+    - **Descrição**: Consulta informações de um Pokémon específico pelo nome ou ID.
+    - **Parâmetros**: `nameOrId` (ID ou nome do Pokémon)
+    - **Resposta**: Detalhes do Pokémon solicitado.
+
+- `GET /pokemon`:
+    - **Descrição**: Lista todos os Pokémon disponíveis.
+    - **Resposta**: Uma lista de Pokémon com informações resumidas.
+
+#### Pokédex
+- `GET /pokedex`:
+    - **Descrição**: Retorna a Pokédex do usuário autenticado.
+    - **Requisitos**: Autenticação via Keycloak.
+    - **Resposta**: Uma lista dos Pokémon na Pokédex do usuário.
+
+- `POST /pokedex`:
+    - **Descrição**: Adiciona um Pokémon à Pokédex do usuário autenticado.
+    - **Requisitos**: Autenticação via Keycloak.
+    - **Corpo da Requisição**: Informações do Pokémon a ser adicionado.
+    - **Resposta**: Confirmação de adição do Pokémon.
+
+- `DELETE /pokedex`:
+    - **Descrição**: Remove um Pokémon da Pokédex do usuário autenticado.
+    - **Requisitos**: Autenticação via Keycloak.
+    - **Corpo da Requisição**: Informações do Pokémon a ser removido.
+    - **Resposta**: Confirmação de remoção do Pokémon.
 
 ### 🚀 Começando
 
