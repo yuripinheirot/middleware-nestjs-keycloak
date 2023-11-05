@@ -21,7 +21,7 @@ services:
     ports:
       - 3003:3003
       - 9229:9229
-    command: yarn dev
+    command: bash -c "yarn && yarn dev"
     volumes:
       - ./:/home/node/app
       - app-node-modules-vol:/home/node/app/node_modules
