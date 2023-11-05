@@ -14,16 +14,6 @@ Este projeto é um middleware construído com NestJS que fornece uma endpoints o
 - **Sistema de Caching**: Otimiza as requisições e diminui os tempos de carregamento usando Redis como sistema de caching.
 - **Autenticação com Keycloak**: Garante a segurança dos dados e das operações ao exigir autenticação via Keycloak.
 
-
----
-### 🔑 Nota Sobre Chaves e Variáveis de Ambiente
-
-No desenvolvimento deste projeto, optou-se por não ocultar chaves de API, variáveis de ambiente e outras informações sensíveis. A razão para essa decisão é que o repositório foi criado com propósitos estritamente didáticos. Em ambientes de produção reais, é essencial que tais informações sejam tratadas com o máximo cuidado, adotando-se ferramentas e práticas de segurança apropriadas.
-
-Se alguém estiver considerando adaptar ou usar este projeto em um contexto mais realista ou em um ambiente de produção, **é fortemente recomendado** que implemente medidas de segurança adequadas. Isso inclui, mas não se limita a, o uso de variáveis de ambiente seguras, serviços de gerenciamento de segredos e a prática de nunca comitar informações sensíveis diretamente no repositório.
-
-Esta observação é um lembrete da importância das melhores práticas de segurança no desenvolvimento de software e da necessidade constante de proteger informações valiosas e sensíveis.
-
 ---
 ### 🛣️ Rotas
 
@@ -103,6 +93,15 @@ O aplicativo agora estará rodando em [http://localhost:3003](http://localhost:3
 - [TypeORM](https://typeorm.io/): ORM para acesso ao PostgreSQL
 - [Redis](https://redis.io/): Usado como sistema de cache, através de `cache-manager-redis-store`.
 - [Jest](https://jestjs.io/): Framework de testes para JavaScript com foco na simplicidade.
+
+---
+### 🔑 Nota Sobre Chaves e Variáveis de Ambiente
+
+No desenvolvimento deste projeto, optou-se por não ocultar chaves de API, variáveis de ambiente e outras informações sensíveis. A razão para essa decisão é que o repositório foi criado com propósitos estritamente didáticos. Em ambientes de produção reais, é essencial que tais informações sejam tratadas com o máximo cuidado, adotando-se ferramentas e práticas de segurança apropriadas.
+
+Se alguém estiver considerando adaptar ou usar este projeto em um contexto mais realista ou em um ambiente de produção, **é fortemente recomendado** que implemente medidas de segurança adequadas. Isso inclui, mas não se limita a, o uso de variáveis de ambiente seguras, serviços de gerenciamento de segredos e a prática de nunca comitar informações sensíveis diretamente no repositório.
+
+Esta observação é um lembrete da importância das melhores práticas de segurança no desenvolvimento de software e da necessidade constante de proteger informações valiosas e sensíveis.
 
 ---
 ### 📝 Licença
