@@ -1,10 +1,10 @@
 # PokeAPI NestJS Middleware
----
+
 Este projeto é um middleware construído com NestJS que fornece uma endpoints otimizados para acessar a [Pokedex](https://github.com/yuripinheirot/pokemon-project-front). Ele inclui uma série de características avançadas, desde mapeamentos com class-transformer, sistema de caching até autenticação com Keycloak.
 
-
-### 🎨 Características
 ---
+### 🎨 Características
+
 - **Mapeamento com Class-transformer**: Converte a saída dos endpoints da PokeAPI para uma forma mais utilizável e otimizada para o middleware.
 - **Validação de Dados**: Utiliza o Class Validator para garantir que os dados de entrada sejam corretos antes de processá-los.
 - **Sistema de Logging com Interceptors**: Identifica e registra falhas, facilitando a depuração e monitoramento do middleware.
@@ -15,16 +15,18 @@ Este projeto é um middleware construído com NestJS que fornece uma endpoints o
 - **Autenticação com Keycloak**: Garante a segurança dos dados e das operações ao exigir autenticação via Keycloak.
 
 
-### 🔑 Nota Sobre Chaves e Variáveis de Ambiente
 ---
+### 🔑 Nota Sobre Chaves e Variáveis de Ambiente
+
 No desenvolvimento deste projeto, optou-se por não ocultar chaves de API, variáveis de ambiente e outras informações sensíveis. A razão para essa decisão é que o repositório foi criado com propósitos estritamente didáticos. Em ambientes de produção reais, é essencial que tais informações sejam tratadas com o máximo cuidado, adotando-se ferramentas e práticas de segurança apropriadas.
 
 Se alguém estiver considerando adaptar ou usar este projeto em um contexto mais realista ou em um ambiente de produção, **é fortemente recomendado** que implemente medidas de segurança adequadas. Isso inclui, mas não se limita a, o uso de variáveis de ambiente seguras, serviços de gerenciamento de segredos e a prática de nunca comitar informações sensíveis diretamente no repositório.
 
 Esta observação é um lembrete da importância das melhores práticas de segurança no desenvolvimento de software e da necessidade constante de proteger informações valiosas e sensíveis.
 
-### 🛣️ Rotas
 ---
+### 🛣️ Rotas
+
 O middleware oferece uma variedade de endpoints para facilitar o acesso aos dados da PokeAPI e à gestão da Pokédex do usuário. Abaixo estão as principais rotas disponíveis:
 
 #### Pokémon
@@ -55,8 +57,9 @@ O middleware oferece uma variedade de endpoints para facilitar o acesso aos dado
     - **Corpo da Requisição**: Informações do Pokémon a ser removido.
     - **Resposta**: Confirmação de remoção do Pokémon.
 
-### 🚀 Começando
 ---
+### 🚀 Começando
+
 ### Pré-requisitos
 
 - [Docker](https://docs.docker.com/engine/install/)
@@ -88,8 +91,9 @@ docker compose up app
 
 O aplicativo agora estará rodando em [http://localhost:3003](http://localhost:3003).
 
-### 🛠️ Construído Com
 ---
+### 🛠️ Construído Com
+
 - [NestJS](https://nestjs.com/): Um framework para construção de aplicações server-side eficientes, confiáveis e escaláveis em Node.js.
 - [Axios](https://axios-http.com/): Cliente HTTP promissivo para o navegador e Node.js.
 - [Class-transformer](https://github.com/typestack/class-transformer): Fornece uma maneira de realizar transformações de objeto para objeto. Utilizado para mapear os endpoints da PokeAPI.
@@ -100,10 +104,12 @@ O aplicativo agora estará rodando em [http://localhost:3003](http://localhost:3
 - [Redis](https://redis.io/): Usado como sistema de cache, através de `cache-manager-redis-store`.
 - [Jest](https://jestjs.io/): Framework de testes para JavaScript com foco na simplicidade.
 
-### 📝 Licença
 ---
+### 📝 Licença
+
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://chat.openai.com/c/LICENSE) para mais detalhes.
 
-### 💬 Contribuições
 ---
+### 💬 Contribuições
+
 Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma `issue` ou enviar um `pull request`.
