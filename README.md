@@ -1,73 +1,75 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# PokeAPI NestJS Middleware
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é uma middleware construído com NestJS que fornece uma interface otimizada para acessar a [PokeAPI](https://pokeapi.co/). Ele inclui uma série de características avançadas, desde mapeamentos com class-transformer, sistema de caching até autenticação com Keycloak.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### 🎨 Características
 
-## Description
+- **Mapeamento com Class-transformer**: Converte a saída dos endpoints da PokeAPI para uma forma mais utilizável e otimizada para o middleware.
+- **Validação de Dados**: Utiliza o Class Validator para garantir que os dados de entrada sejam corretos antes de processá-los.
+- **Sistema de Logging com Interceptors**: Identifica e registra falhas, facilitando a depuração e monitoramento do middleware.
+- **Tipagem Forte com TypeScript**: Todo o projeto é escrito em TypeScript, garantindo a segurança e a robustez do código.
+- **Testes**: Inclui testes de feature e unitários para assegurar a qualidade e a funcionalidade do middleware.
+- **TypeORM com PostgreSQL**: Utiliza TypeORM para integração com um banco de dados PostgreSQL.
+- **Sistema de Caching**: Otimiza as requisições e diminui os tempos de carregamento usando Redis como sistema de caching.
+- **Rotas**:
+	- **Pokémon**:
+	    - `GET /pokemon/:nameOrId`: Consulta e retorna detalhes de um Pokémon específico, seja por nome ou ID.
+	    - `GET /pokemon`: Lista todos os Pokémon disponíveis, perfeito para uma visão geral.
+	- **Pokédex**:
+	    - `GET /pokedex`: Acessa e retorna a Pokédex do usuário autenticado.
+	    - `POST /pokedex`: Permite adicionar um Pokémon à Pokédex do usuário autenticado.
+	    - `DELETE /pokedex`: Remove um Pokémon da Pokédex do usuário autenticado.
+- **Autenticação com Keycloak**: Garante a segurança dos dados e das operações ao exigir autenticação via Keycloak.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### 🚀 Começando
 
-## Installation
+### Pré-requisitos
 
-```bash
-$ yarn install
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker compose](https://docs.docker.com/compose/)
+- [Yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
+
+### Instalação
+
+1. Clone este repositório:
+``` shell
+git clone https://github.com/yuripinheirot/pokemon-project-back
 ```
 
-## Running the app
-
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+2. Navegue até o diretório do projeto:
+``` shell
+cd pokemon-project-back
 ```
 
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+3. Instale as dependências:
+``` shell
+yarn
 ```
 
-## Support
+4. Execute o aplicativo localmente:
+``` shell
+docker compose up app
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+O aplicativo agora estará rodando em [http://localhost:3003](http://localhost:3003).
 
-## Stay in touch
+### 🛠️ Construído Com
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- [NestJS](https://nestjs.com/): Um framework para construção de aplicações server-side eficientes, confiáveis e escaláveis em Node.js.
+- [Axios](https://axios-http.com/): Cliente HTTP promissivo para o navegador e Node.js.
+- [Class-transformer](https://github.com/typestack/class-transformer): Fornece uma maneira de realizar transformações de objeto para objeto. Utilizado para mapear os endpoints da PokeAPI.
+- [Class-validator](https://github.com/typestack/class-validator): Validação e sanitização de classes/objetos em TypeScript/JavaScript.
+- [Keycloak-connect](https://www.keycloak.org/): Autenticação robusta através da integração do Keycloak.
+- [TypeScript](https://www.typescriptlang.org/): Código fonte do middleware escrito em TypeScript, assegurando robustez e clareza.
+- [TypeORM](https://typeorm.io/): ORM para acesso ao PostgreSQL
+- [Redis](https://redis.io/): Usado como sistema de cache, através de `cache-manager-redis-store`.
+- [Jest](https://jestjs.io/): Framework de testes para JavaScript com foco na simplicidade.
 
-## License
+### 📝 Licença
 
-Nest is [MIT licensed](LICENSE).
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://chat.openai.com/c/LICENSE) para mais detalhes.
+
+### 💬 Contribuições
+
+Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma `issue` ou enviar um `pull request`.
