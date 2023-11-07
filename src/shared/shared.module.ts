@@ -16,7 +16,7 @@ import { APP_GUARD } from '@nestjs/core';
   imports: [
     HttpModule,
     KeycloakConnectModule.register({
-      authServerUrl: 'http://host.docker.internal:8080/auth',
+      authServerUrl: 'http://172.17.0.1:8080/auth',
       realm: 'pokemon',
       clientId: 'pokemon-api',
       secret: 'iM7yPkxIjSHrB5CnkMaiN8JqOaJNl3IN',

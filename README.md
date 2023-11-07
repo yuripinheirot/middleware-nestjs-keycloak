@@ -3,6 +3,7 @@
 Este projeto é um middleware construído com NestJS que fornece uma endpoints otimizados para acessar a [Pokedex](https://github.com/yuripinheirot/pokemon-project-front). Ele inclui uma série de características avançadas, desde mapeamentos com class-transformer, sistema de caching até autenticação com Keycloak.
 
 ---
+
 ### 🎨 Características
 
 - **Mapeamento com Class-transformer**: Converte a saída dos endpoints da PokeAPI para uma forma mais utilizável e otimizada para o middleware.
@@ -15,39 +16,46 @@ Este projeto é um middleware construído com NestJS que fornece uma endpoints o
 - **Autenticação com Keycloak**: Garante a segurança dos dados e das operações ao exigir autenticação via Keycloak.
 
 ---
+
 ### 🛣️ Rotas
 
 O middleware oferece uma variedade de endpoints para facilitar o acesso aos dados da PokeAPI e à gestão da Pokédex do usuário. Abaixo estão as principais rotas disponíveis:
 
 #### Pokémon
+
 - `GET /pokemon/:nameOrId`:
-    - **Descrição**: Consulta informações de um Pokémon específico pelo nome ou ID.
-    - **Parâmetros**: `nameOrId` (ID ou nome do Pokémon)
-    - **Resposta**: Detalhes do Pokémon solicitado.
+
+  - **Descrição**: Consulta informações de um Pokémon específico pelo nome ou ID.
+  - **Parâmetros**: `nameOrId` (ID ou nome do Pokémon)
+  - **Resposta**: Detalhes do Pokémon solicitado.
 
 - `GET /pokemon`:
-    - **Descrição**: Lista todos os Pokémon disponíveis.
-    - **Resposta**: Uma lista de Pokémon com informações resumidas.
+  - **Descrição**: Lista todos os Pokémon disponíveis.
+  - **Resposta**: Uma lista de Pokémon com informações resumidas.
 
 #### Pokédex
+
 - `GET /pokedex`:
-    - **Descrição**: Retorna a Pokédex do usuário autenticado.
-    - **Requisitos**: Autenticação via Keycloak.
-    - **Resposta**: Uma lista dos Pokémon na Pokédex do usuário.
+
+  - **Descrição**: Retorna a Pokédex do usuário autenticado.
+  - **Requisitos**: Autenticação via Keycloak.
+  - **Resposta**: Uma lista dos Pokémon na Pokédex do usuário.
 
 - `POST /pokedex`:
-    - **Descrição**: Adiciona um Pokémon à Pokédex do usuário autenticado.
-    - **Requisitos**: Autenticação via Keycloak.
-    - **Corpo da Requisição**: Informações do Pokémon a ser adicionado.
-    - **Resposta**: Confirmação de adição do Pokémon.
+
+  - **Descrição**: Adiciona um Pokémon à Pokédex do usuário autenticado.
+  - **Requisitos**: Autenticação via Keycloak.
+  - **Corpo da Requisição**: Informações do Pokémon a ser adicionado.
+  - **Resposta**: Confirmação de adição do Pokémon.
 
 - `DELETE /pokedex`:
-    - **Descrição**: Remove um Pokémon da Pokédex do usuário autenticado.
-    - **Requisitos**: Autenticação via Keycloak.
-    - **Corpo da Requisição**: Informações do Pokémon a ser removido.
-    - **Resposta**: Confirmação de remoção do Pokémon.
+  - **Descrição**: Remove um Pokémon da Pokédex do usuário autenticado.
+  - **Requisitos**: Autenticação via Keycloak.
+  - **Corpo da Requisição**: Informações do Pokémon a ser removido.
+  - **Resposta**: Confirmação de remoção do Pokémon.
 
 ---
+
 ### 🚀 Começando
 
 ### Pré-requisitos
@@ -60,28 +68,33 @@ O middleware oferece uma variedade de endpoints para facilitar o acesso aos dado
 ### Instalação
 
 1. Clone este repositório:
-``` shell
+
+```shell
 git clone https://github.com/yuripinheirot/pokemon-project-back
 ```
 
 2. Navegue até o diretório do projeto:
-``` shell
+
+```shell
 cd pokemon-project-back
 ```
 
 3. Instale as dependências:
-``` shell
+
+```shell
 yarn
 ```
 
 4. Execute o aplicativo localmente:
-``` shell
+
+```shell
 docker compose up app
 ```
 
-O aplicativo agora estará rodando em [http://localhost:3003](http://localhost:3003).
+O aplicativo agora estará rodando em [http://172.17.0.1:3003](http://172.17.0.1:3003).
 
 ---
+
 ### 🛠️ Construído Com
 
 - [NestJS](https://nestjs.com/): Um framework para construção de aplicações server-side eficientes, confiáveis e escaláveis em Node.js.
@@ -95,6 +108,7 @@ O aplicativo agora estará rodando em [http://localhost:3003](http://localhost:3
 - [Jest](https://jestjs.io/): Framework de testes para JavaScript com foco na simplicidade.
 
 ---
+
 ### 🔑 Nota Sobre Chaves e Variáveis de Ambiente
 
 No desenvolvimento deste projeto, optou-se por não ocultar chaves de API, variáveis de ambiente e outras informações sensíveis. A razão para essa decisão é que o repositório foi criado com propósitos estritamente didáticos. Em ambientes de produção reais, é essencial que tais informações sejam tratadas com o máximo cuidado, adotando-se ferramentas e práticas de segurança apropriadas.
@@ -104,11 +118,13 @@ Se alguém estiver considerando adaptar ou usar este projeto em um contexto mais
 Esta observação é um lembrete da importância das melhores práticas de segurança no desenvolvimento de software e da necessidade constante de proteger informações valiosas e sensíveis.
 
 ---
+
 ### 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://chat.openai.com/c/LICENSE) para mais detalhes.
 
 ---
+
 ### 💬 Contribuições
 
 Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma `issue` ou enviar um `pull request`.
