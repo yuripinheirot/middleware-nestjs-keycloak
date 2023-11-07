@@ -19,7 +19,7 @@ import { APP_GUARD } from '@nestjs/core';
       authServerUrl: 'http://172.17.0.1:8080/auth',
       realm: 'pokemon',
       clientId: 'pokemon-api',
-      secret: 'iM7yPkxIjSHrB5CnkMaiN8JqOaJNl3IN',
+      secret: 'yfs3XJybcVIXtmFWfBmGpGgwp3Dk13Cu',
       cookieKey: 'Authorization',
       logLevels: ['verbose'],
       tokenValidation: TokenValidation.ONLINE,
