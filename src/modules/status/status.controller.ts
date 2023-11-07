@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import { Unprotected } from 'nest-keycloak-connect';
 import { CustomLoggerService } from 'src/shared/logger/logger.service';
 
 @Controller('status')
@@ -8,6 +9,7 @@ export class StatusController {
   }
 
   @Get()
+  @Unprotected()
   getStatus() {
     try {
       const message = { status: 'ok', message: "Hello! I'm here!" };
