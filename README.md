@@ -92,7 +92,7 @@ Antes de começarmos a instalação, é importante configurar corretamente o amb
    - Na janela de propriedades, selecione o adaptador `Protocolo de Internet Versão 4 (IPv4)` e clique em `Propriedades`.
    - Em seguida, clique em `Avançado`.
 
-   Certifique-se de que as configurações avançadas do Protocolo de Internet Versão 4 (IPv4) estejam definidas da seguinte forma:
+   Adicione o IP `172.17.0.1` nas configurações avançadas do Protocolo de Internet Versão 4 (IPv4) da seguinte forma:
    ![Passo 4](readme/Screenshot_1.png)
 
 **Passo 5:** Reinicie o WSL e o Docker Desktop:
