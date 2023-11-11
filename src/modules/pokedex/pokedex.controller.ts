@@ -13,10 +13,12 @@ import { AuthenticatedUser } from 'nest-keycloak-connect';
 import { UserAuthenticatedType } from 'src/shared/types/keycloak.type';
 import { AddPokemonRequestDto } from './dto/AddPokemon.request.dto';
 import { PokedexResponseDto } from './dto/Pokedex.response.dto';
+import { ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
 
+@ApiBearerAuth('Authorization')
 @Controller('pokedex')
 export class PokedexController {
-  constructor(private readonly pokedexService: PokedexService) {}
+  constructor(private readonly pokedexService: PokedexService) { }
 
   @Get()
   async getPokedex(@AuthenticatedUser() user: UserAuthenticatedType) {
