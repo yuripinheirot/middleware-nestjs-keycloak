@@ -28,8 +28,8 @@ async function bootstrap() {
         name: 'Authorization',
         bearerFormat: 'Bearer',
         scheme: 'Bearer',
-        type: 'openIdConnect',
-        in: 'Header'
+        type: 'http',
+        in: 'Header',
       },
       'Authorization',
     )
