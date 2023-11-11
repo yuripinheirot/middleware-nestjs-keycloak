@@ -9,16 +9,17 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PokedexService } from './pokedex.service';
-import { AuthenticatedUser } from 'nest-keycloak-connect';
+import { AuthenticatedUser, Resource } from 'nest-keycloak-connect';
 import { UserAuthenticatedType } from 'src/shared/types/keycloak.type';
 import { AddPokemonRequestDto } from './dto/AddPokemon.request.dto';
 import { PokedexResponseDto } from './dto/Pokedex.response.dto';
-import { ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiBearerAuth('Authorization')
+@Resource('Pokedex')
 @Controller('pokedex')
 export class PokedexController {
-  constructor(private readonly pokedexService: PokedexService) { }
+  constructor(private readonly pokedexService: PokedexService) {}
 
   @Get()
   async getPokedex(@AuthenticatedUser() user: UserAuthenticatedType) {
