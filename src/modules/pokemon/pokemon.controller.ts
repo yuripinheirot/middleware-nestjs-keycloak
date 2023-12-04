@@ -5,6 +5,7 @@ import { AxiosErrorsInterceptor } from 'src/shared/interceptors/express.intercep
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { queryPaginatedParams } from 'src/shared/types/params.type';
 import { Resource, Unprotected } from 'nest-keycloak-connect';
+import { ApiParam } from '@nestjs/swagger';
 
 @Controller('pokemon')
 @Resource('PokeAPI')
@@ -19,6 +20,10 @@ export class PokemonController {
     this.logger.setPrefix(`@Controller('pokemon')`);
   }
 
+  @ApiParam({
+    name: 'pokemon',
+    required: true,
+  })
   @Get(':pokemon')
   async findOne(@Param('pokemon') pokemon: string | number) {
     return this.pokemonService.findOne(pokemon);
